@@ -3,18 +3,18 @@ import pymysql
 import requests
 
 # Define the API URL and headers
-API_URL = 'http://taxonomy-admin.prd.meesho.int/api/v1/products/edit'
+API_URL = 'http://localhost/api/v1/products/edit'
 HEADERS = {
-    'Authorization': 'Token bYTFfK5Czo42zfhMmPQoUvXmWiSJ9fV8EbTKdQfDFL4A40tJ',
+    'Authorization': 'Token abc',
     'MEESHO-ISO-COUNTRY-CODE': 'IN',
     'Content-Type': 'application/json'
 }
 
 def bulk_upsert_catalog(catalog_id):
-    url = 'http://supplier-search.prd.meesho.int/api/v1/catalog-management/supplier/catalog/bulk-upsert'
+    url = 'http://gement/supplier/catalog/bulk-upsert'
     headers = {
         'Content-Type': 'application/json',
-        'Authentication': 'kLSlxSTbsrrlK45GXvmGRGYK4QYiX6lpL6y9LQoSBkbH5qjC'
+        'Authentication': ''
     }
     data = {
         "payload": [{"catalog_id": catalog_id}]
@@ -39,7 +39,7 @@ def send_deactivation_request( entity_id):
     # Return response status and content
 
 
-taxonomyConnection = pymysql.connect(host= 'msql-taxonomy-data-slave.prd.meesho.int', port=3306, user='taxonomy', password='UQAufOdlT8Gf0r33OAmHg', database='taxonomy')
+taxonomyConnection = pymysql.connect(host= 'msql-', port=3306, user='taxonomy', password='UQAufOdlT8Gf0r33OAmHg', database='taxonomy')
 taxonomyCursor = taxonomyConnection.cursor()
 
 file_path = 'catalogIdsNew.csv'
